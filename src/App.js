@@ -3,7 +3,7 @@ import './App.css';
 import Button from './components/button';
 import { useState } from 'react';
 
-function App() {
+function App() { //esta com um problema mas estou apenas praticando o react
   const [numeroAntigo,setNumeroa]=useState([])
   const [nums,setNums]=useState("")
   const [simbolos,setSimbolos]=useState("")
@@ -11,10 +11,6 @@ function App() {
 const armazenar = (e)=>{
  const numeroS = e.target.innerHTML
  setNums(nums+numeroS)
- console.log(nums)
- let ints = +nums
- console.log(ints)
- setNumeroa([...numeroAntigo,ints])
  
 }
 
@@ -28,7 +24,7 @@ const guardarSimbolo = (e)=>{
   let ints = +nums
   console.log(ints)
   setNumeroa([...numeroAntigo,ints])
-  setNums(0)
+  setNums("")
   console.log(numeroAntigo)
   setSimbolos(simbolo)
     
@@ -37,6 +33,24 @@ const guardarSimbolo = (e)=>{
 const calcular = ()=>{
   if(simbolos==="+"){
     let numeros =   numeroAntigo.reduce((total, currentValue) => total + currentValue, 0);
+    let numeroS = numeros + ""
+    setNums(numeroS)
+    console.log(numeros)
+  }
+ else if(simbolos==="-"){
+    let numeros =   numeroAntigo.reduce((total, currentValue) => total - currentValue, 0);
+    let numeroS = numeros + ""
+    setNums(numeroS)
+    console.log(numeros)
+  }
+ else if(simbolos==="x"){
+    let numeros =   numeroAntigo.reduce((total, currentValue) => total * currentValue, 1);
+    let numeroS = numeros + ""
+    setNums(numeroS)
+    console.log(numeros)
+  }
+ else if(simbolos==="/"){
+    let numeros =   numeroAntigo.reduce((total, currentValue) => total / currentValue, 1);
     let numeroS = numeros + ""
     setNums(numeroS)
     console.log(numeros)
